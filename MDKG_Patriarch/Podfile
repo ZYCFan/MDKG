@@ -1,0 +1,19 @@
+platform :ios,"7.0"
+inhibit_all_warnings!
+
+target ‘MDKinderGarten’ do
+pod 'YTKNetwork'
+pod 'SDWebImage'
+pod 'MBProgressHUD'
+pod 'Masonry'
+pod 'MJExtension'
+pod 'MJRefresh'
+pod 'FMDB'
+pod 'SAMKeychain'
+pod 'UMengAnalytics-NO-IDFA'
+pod 'SDCycleScrollView','~> 1.64'
+pod 'IQKeyboardManager'
+pod ‘MWPhotoBrowser’
+pod 'Hyphenate_CN'
+
+end
