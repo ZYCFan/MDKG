@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KGMCourseContentCell" rowHeight="212" id="KGk-i7-Jjw" customClass="KGMCourseContentCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="375" height="249"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="抄写并朗诵弟子规" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nz0-95-dKB">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="zuoye_img_1" translatesAutoresizingMaskIntoConstraints="NO" id="hSH-er-7lP"/>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hSH-er-7lP" firstAttribute="top" secondItem="nz0-95-dKB" secondAttribute="bottom" constant="15" id="0hv-OB-mto"/>
+                    <constraint firstItem="hSH-er-7lP" firstAttribute="leading" secondItem="nz0-95-dKB" secondAttribute="leading" id="3LY-RO-qtn"/>
+                    <constraint firstItem="hSH-er-7lP" firstAttribute="trailing" secondItem="nz0-95-dKB" secondAttribute="trailing" id="EtW-g4-yaY"/>
+                    <constraint firstAttribute="bottom" secondItem="hSH-er-7lP" secondAttribute="bottom" constant="15" id="YxL-zc-zDN"/>
+                    <constraint firstAttribute="trailing" secondItem="nz0-95-dKB" secondAttribute="trailing" constant="15" id="akm-LI-46c"/>
+                    <constraint firstItem="nz0-95-dKB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cn4-cv-L7q"/>
+                    <constraint firstItem="nz0-95-dKB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="qH1-rw-vLe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgContent" destination="hSH-er-7lP" id="DBx-U2-Pyh"/>
+                <outlet property="lblTitle" destination="nz0-95-dKB" id="ruU-rk-g6Z"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="136"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="zuoye_img_1" width="280" height="190"/>
+    </resources>
+</document>

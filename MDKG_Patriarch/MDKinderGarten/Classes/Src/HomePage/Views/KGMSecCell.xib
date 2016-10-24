@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KGMSecCell" rowHeight="240" id="KGk-i7-Jjw" customClass="KGMSecCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="375" height="249.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Di-Pc-Fj7" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="麦豆课堂秀" image="nav_1">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jY3-Ds-dCZ"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWj-zl-uYO" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="通知信息" image="nav_2">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q5b-6h-4Zl"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdo-pu-0d3" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="课堂与专业" image="nav_3">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jda-ww-fOn"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSg-iO-Ngc" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="班级相册" image="nav_4">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="h7t-0N-qfV"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qo-49-GdJ" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="宝贝食谱" image="nav_5">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d5S-jN-k55"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zl9-cp-Ovg" customClass="KGMClickButton">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="班级群组" image="nav_6">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="btnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="erk-Tf-EFl"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Zl9-cp-Ovg" firstAttribute="bottom" secondItem="TSg-iO-Ngc" secondAttribute="bottom" id="1pI-mi-28T"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="2rs-Z0-IX7"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="top" secondItem="7Di-Pc-Fj7" secondAttribute="top" id="3mj-Wi-nNz"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="bottom" secondItem="7Di-Pc-Fj7" secondAttribute="bottom" id="49F-wG-eue"/>
+                    <constraint firstItem="Zl9-cp-Ovg" firstAttribute="top" secondItem="TSg-iO-Ngc" secondAttribute="top" id="7zv-4s-Tht"/>
+                    <constraint firstItem="mdo-pu-0d3" firstAttribute="width" secondItem="7Di-Pc-Fj7" secondAttribute="width" id="A1Q-A9-Xlw"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="top" secondItem="lWj-zl-uYO" secondAttribute="bottom" constant="35" id="Aju-e9-7Pm"/>
+                    <constraint firstItem="7Di-Pc-Fj7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="BWd-vZ-g96"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="height" secondItem="7Di-Pc-Fj7" secondAttribute="height" id="Gpa-aR-ri8"/>
+                    <constraint firstItem="TSg-iO-Ngc" firstAttribute="width" secondItem="7Di-Pc-Fj7" secondAttribute="width" id="IY4-f6-GfH"/>
+                    <constraint firstItem="TSg-iO-Ngc" firstAttribute="height" secondItem="7Di-Pc-Fj7" secondAttribute="height" id="JbY-tJ-eCn"/>
+                    <constraint firstItem="mdo-pu-0d3" firstAttribute="height" secondItem="7Di-Pc-Fj7" secondAttribute="height" id="MjW-EU-46a"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="width" secondItem="7Di-Pc-Fj7" secondAttribute="width" id="OAW-S7-ezf"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="bottom" secondItem="TSg-iO-Ngc" secondAttribute="bottom" id="Rgm-sX-bBE"/>
+                    <constraint firstItem="mdo-pu-0d3" firstAttribute="leading" secondItem="lWj-zl-uYO" secondAttribute="trailing" id="URG-ai-dwo"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="leading" secondItem="7Di-Pc-Fj7" secondAttribute="trailing" id="Uym-hb-3Dn"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="W95-jr-EhE"/>
+                    <constraint firstItem="Zl9-cp-Ovg" firstAttribute="width" secondItem="7Di-Pc-Fj7" secondAttribute="width" id="XLq-Yq-KPF"/>
+                    <constraint firstItem="Zl9-cp-Ovg" firstAttribute="height" secondItem="7Di-Pc-Fj7" secondAttribute="height" id="XnD-x0-EQH"/>
+                    <constraint firstItem="mdo-pu-0d3" firstAttribute="bottom" secondItem="7Di-Pc-Fj7" secondAttribute="bottom" id="YPK-0h-MRO"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="top" secondItem="TSg-iO-Ngc" secondAttribute="top" id="aKw-7h-Guf"/>
+                    <constraint firstItem="lWj-zl-uYO" firstAttribute="height" secondItem="7Di-Pc-Fj7" secondAttribute="height" id="aL3-Ix-LCF"/>
+                    <constraint firstAttribute="bottom" secondItem="1qo-49-GdJ" secondAttribute="bottom" constant="40" id="aMe-rF-bue"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="width" secondItem="7Di-Pc-Fj7" secondAttribute="width" id="cfK-46-TMo"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="leading" secondItem="TSg-iO-Ngc" secondAttribute="trailing" id="chn-0n-Nqm"/>
+                    <constraint firstAttribute="trailing" secondItem="mdo-pu-0d3" secondAttribute="trailing" constant="15" id="e7g-wD-Shc"/>
+                    <constraint firstItem="Zl9-cp-Ovg" firstAttribute="leading" secondItem="1qo-49-GdJ" secondAttribute="trailing" id="n2C-VN-NpA"/>
+                    <constraint firstItem="1qo-49-GdJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="rAC-c2-war"/>
+                    <constraint firstItem="mdo-pu-0d3" firstAttribute="top" secondItem="7Di-Pc-Fj7" secondAttribute="top" id="zFG-65-1Wc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="24.5" y="150"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="nav_1" width="40" height="40"/>
+        <image name="nav_2" width="40" height="40"/>
+        <image name="nav_3" width="40" height="40"/>
+        <image name="nav_4" width="40" height="40"/>
+        <image name="nav_5" width="40" height="40"/>
+        <image name="nav_6" width="40" height="40"/>
+    </resources>
+</document>
