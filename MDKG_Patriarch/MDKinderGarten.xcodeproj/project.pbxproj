@@ -17,6 +17,7 @@
 		C00AA2A21DB1B9B8002B2A23 /* KGMCourseService.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AA2A11DB1B9B8002B2A23 /* KGMCourseService.m */; };
 		C00AA2A61DB1BB28002B2A23 /* KGMClassNoteDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AA2A51DB1BB28002B2A23 /* KGMClassNoteDTO.m */; };
 		C00AA2A91DB1BCEB002B2A23 /* KGMEducationNoteDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = C00AA2A81DB1BCEB002B2A23 /* KGMEducationNoteDTO.m */; };
+		C00EE7751DBF2E860033D608 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C00EE7741DBF2E860033D608 /* MobileCoreServices.framework */; };
 		C0114E3D1DB9BC1F00466D09 /* KGMMySelfService.m in Sources */ = {isa = PBXBuildFile; fileRef = C0114E3C1DB9BC1F00466D09 /* KGMMySelfService.m */; };
 		C0114E401DB9E40700466D09 /* KGMUploadImageDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = C0114E3F1DB9E40700466D09 /* KGMUploadImageDTO.m */; };
 		C0114E431DB9E98800466D09 /* KGMTeacherContractsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0114E421DB9E98800466D09 /* KGMTeacherContractsController.m */; };
@@ -193,6 +194,7 @@
 		C00AA2A51DB1BB28002B2A23 /* KGMClassNoteDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMClassNoteDTO.m; sourceTree = "<group>"; };
 		C00AA2A71DB1BCEB002B2A23 /* KGMEducationNoteDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMEducationNoteDTO.h; sourceTree = "<group>"; };
 		C00AA2A81DB1BCEB002B2A23 /* KGMEducationNoteDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMEducationNoteDTO.m; sourceTree = "<group>"; };
+		C00EE7741DBF2E860033D608 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		C0114E3B1DB9BC1F00466D09 /* KGMMySelfService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMMySelfService.h; sourceTree = "<group>"; };
 		C0114E3C1DB9BC1F00466D09 /* KGMMySelfService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGMMySelfService.m; sourceTree = "<group>"; };
 		C0114E3E1DB9E40700466D09 /* KGMUploadImageDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGMUploadImageDTO.h; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00EE7751DBF2E860033D608 /* MobileCoreServices.framework in Frameworks */,
 				C04153A41DB6132B00C72BA2 /* WebKit.framework in Frameworks */,
 				C074D1631C586DC30023C21A /* Security.framework in Frameworks */,
 				C0C387361C561405001BAB27 /* SystemConfiguration.framework in Frameworks */,
@@ -1367,6 +1370,7 @@
 		F06F1F9FE58A92E21C311709 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C00EE7741DBF2E860033D608 /* MobileCoreServices.framework */,
 				C04153A31DB6132B00C72BA2 /* WebKit.framework */,
 				C074D1621C586DC30023C21A /* Security.framework */,
 				C0C387351C561405001BAB27 /* SystemConfiguration.framework */,
@@ -1846,6 +1850,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JJ3W5SU35P;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MDKinderGarten/Prefix.pch";
 				INFOPLIST_FILE = MDKinderGarten/Info.plist;
@@ -1854,8 +1859,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/BaiduPush/LibBPush",
-					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daoeasy.MDKinderGarten;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1872,6 +1875,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JJ3W5SU35P;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MDKinderGarten/Prefix.pch";
 				INFOPLIST_FILE = MDKinderGarten/Info.plist;
@@ -1880,8 +1884,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/BaiduPush/LibBPush",
-					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/MDKinderGarten/Classes/Vendors/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = daoeasy.MDKinderGarten;
 				PRODUCT_NAME = "$(TARGET_NAME)";

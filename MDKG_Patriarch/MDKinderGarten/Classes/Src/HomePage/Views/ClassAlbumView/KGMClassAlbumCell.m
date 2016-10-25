@@ -7,6 +7,7 @@
 //
 
 #import "KGMClassAlbumCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface KGMClassAlbumCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
@@ -18,6 +19,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setImageUrl:(NSString *)imageUrl {
+    _imageUrl = imageUrl;
+    [self.imageV sd_setImageWithURL:[NSURL URLWithString:imageUrl ?: @""] placeholderImage:[UIImage imageNamed:@"news_demo"]];
 }
 
 @end

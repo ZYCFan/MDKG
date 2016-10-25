@@ -10,4 +10,6 @@
 
 @interface KGMClassAlbumCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *imageUrl;
+
 @end

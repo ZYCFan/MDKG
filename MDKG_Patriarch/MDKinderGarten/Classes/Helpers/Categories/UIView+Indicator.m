@@ -19,10 +19,10 @@
         
         hud = [self createHUDIndicatorViewAtCenter:indiTitle yOffset:0];
     }else{
-        hud.labelText = indiTitle;
+        hud.label.text = indiTitle;
     }
     hud.mode = mode;
-    [hud show:YES];
+    [hud showAnimated:YES];
 }
 
 - (void)showHUDIndicatorViewAtCenter:(NSString *)indiTitle mode:(MBProgressHUDMode)mode afterDelay:(NSTimeInterval)delay
@@ -31,12 +31,11 @@
     if (hud == nil) {
         hud = [self createHUDIndicatorViewAtCenter:indiTitle yOffset:0];
     } else {
-        hud.labelText = indiTitle;
+        hud.label.text = indiTitle;
     }
-    
     hud.mode = mode;
-    [hud show:YES];
-    [hud hide:YES afterDelay:delay];
+    [hud showAnimated:YES];
+    [hud hideAnimated:YES afterDelay:delay];
 }
 
 - (void)showHUDIndicatorViewAtCenter:(NSString *)indiTitle mode:(MBProgressHUDMode)mode yOffset:(CGFloat)y
@@ -48,10 +47,10 @@
         hud = [self createHUDIndicatorViewAtCenter:indiTitle yOffset:y];
         
     }else{
-        hud.labelText = indiTitle;
+        hud.label.text = indiTitle;
     }
     hud.mode = mode;
-    [hud show:YES];
+    [hud showAnimated:YES];
 }
 
 - (void)showHUDIndicatorViewAtCenter:(NSString *)indiTitle mode:(MBProgressHUDMode)mode yOffset:(CGFloat)y afterDelay:(NSTimeInterval)delay
@@ -60,27 +59,27 @@
     if (!hud) {
         hud = [self createHUDIndicatorViewAtCenter:indiTitle yOffset:y];
     } else {
-        hud.labelText = indiTitle;
+        hud.label.text = indiTitle;
     }
     hud.mode = mode;
-    [hud show:YES];
-    [hud hide:YES afterDelay:delay];
+    [hud showAnimated:YES];
+    [hud hideAnimated:YES afterDelay:delay];
 }
 
 - (void)hideHUDIndicatorViewAtCenter
 {
     MBProgressHUD *hud = [self getHUDIndicatorViewAtCenter];
     
-    [hud hide:YES];
+    [hud hideAnimated:YES];
 }
 
 - (MBProgressHUD *)createHUDIndicatorViewAtCenter:(NSString *)indiTitle yOffset:(CGFloat)y
 {
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
     hud.layer.zPosition = 10;
-    hud.yOffset = y;
+    hud.offset = CGPointMake(hud.offset.x, y);
     hud.removeFromSuperViewOnHide = YES;
-    hud.labelText = indiTitle;
+    hud.label.text = indiTitle;
     [self addSubview:hud];
     hud.tag = hudViewTag;
     return hud;

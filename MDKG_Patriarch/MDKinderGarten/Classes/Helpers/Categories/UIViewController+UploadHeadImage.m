@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+UploadHeadImage.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 static const char *uploadPicDataKey = "uploadPicDataKey";
 static const char *uploadImageKey = "uploadImage";

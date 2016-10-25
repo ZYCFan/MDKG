@@ -11,15 +11,6 @@
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-
-
-
-
-#endif /* Prefix_pch */
-
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
 /**
  *  宏定义和常量
  */
@@ -30,6 +21,7 @@
 #import "Masonry.h"
 #import "ZYCFoundation.h"
 #import "Tools.h"
+#import "AFNetworkReachabilityManager.h"
 /**
  *   数据库
  */
@@ -62,8 +54,10 @@
 /**
  *  友盟统计
  */
-#import "MobClick.h"
+//#import "MobClick.h"
 
 #import "MJRefresh.h"
+#import "UMMobClick/MobClick.h"
 
-#endif
+
+#endif /* Prefix_pch */

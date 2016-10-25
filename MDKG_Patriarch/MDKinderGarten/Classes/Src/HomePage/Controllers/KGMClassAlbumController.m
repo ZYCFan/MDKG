@@ -7,19 +7,19 @@
 //
 
 #import "KGMClassAlbumController.h"
-#import "MWPhotoBrowser.h"
+#import "IDMPhotoBrowser.h"
 #import "KGMClassAlbumCell.h"
 
 #import "KGMClassAlbumService.h"
 
 static NSString *const CellIdentify = @"KGMClassAlbumCell";
-@interface KGMClassAlbumController ()<MWPhotoBrowserDelegate>
+@interface KGMClassAlbumController ()<UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSMutableArray *photoArr;
-@property (nonatomic, strong) NSMutableArray *thumbArr;
-@property (nonatomic, strong) MWPhotoBrowser *browser;
+@property (nonatomic, strong) NSMutableArray *photoArr;//小图集合
+@property (nonatomic, strong) NSMutableArray *thumbArr;//大图集合
+@property (nonatomic, strong) NSMutableArray *photos;//图片轮播器集合
 
 @property (nonatomic, strong) KGMClassAlbumService *albumService;
 
@@ -29,30 +29,21 @@ static NSString *const CellIdentify = @"KGMClassAlbumCell";
 
 #pragma mark - life cycle
 
+- (void)loadView {
+    [super loadView];
+    [self.view addSubview:self.collectionView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"班级相册";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-//    [self.photoArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://121.42.178.16/kind/Public/Uploads/photo/2016-10-12/57fdaaf1d06e9.jpg"]]];
-//    [self.photoArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://121.42.178.16/kind/Public/Uploads/photo/2016-10-12/57fdaaf1d06e9.jpg"]]];
-//    
-//    [self.thumbArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://121.42.178.16/kind/Public/Uploads/photo/2016-10-12/mini57fdaaf1d06e9.jpg"]]];
-//    [self.thumbArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:@"http://121.42.178.16/kind/Public/Uploads/photo/2016-10-12/mini57fdaaf1d06e9.jpg"]]];
-    
-    [self.view addSubview:self.browser.view];
-    [self addChildViewController:self.browser];
     
     [self fetchAlbumList];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.translucent = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.collectionView.frame = self.view.bounds;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,22 +51,41 @@ static NSString *const CellIdentify = @"KGMClassAlbumCell";
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - MWPhotoBrowserDelegate
-
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser {
+#pragma mark - UICollectionDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.photoArr.count;
 }
 
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index {
-    if (index < self.photoArr.count)
-        return [self.photoArr objectAtIndex:index];
-    return nil;
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index {
-    if (index < self.thumbArr.count)
-        return [self.thumbArr objectAtIndex:index];
-    return nil;
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    KGMClassAlbumCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentify forIndexPath:indexPath];
+    
+    [self p_configurationCell:cell indexPath:indexPath];
+    return cell;
+}
+
+#pragma mark - UICollectionDelegate
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 3.f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 3.f;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((kDeviceWidth - 6.f) / 3.f, 100.f);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc]initWithPhotos:self.photos];
+    browser.displayActionButton = NO;
+    
+    [browser setInitialPageIndex:indexPath.item];
+    [self presentViewController:browser animated:YES completion:nil];
 }
 
 #pragma mark - networkRequest
@@ -84,11 +94,17 @@ static NSString *const CellIdentify = @"KGMClassAlbumCell";
     [self.albumService fetchClassAlbumListWithClassId:[UserCenter sharedInstance].classId success:^(id data) {
         @strongify(self);
         NSArray *arr = ((KGMClassAlbumListDTO *)data).data;
-        for (KGMClassAlbumListData *detailData in arr) {
-            [self.photoArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:detailData.bimg]]];
-            [self.thumbArr addObject:[MWPhoto photoWithURL:[NSURL URLWithString:detailData.simg]]];
+        if (arr.count) {
+            for (KGMClassAlbumListData *detailData in arr) {
+                [self.photoArr addObject:detailData.simg];
+                [self.thumbArr addObject:detailData.bimg];
+                
+                IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:detailData.bimg]];
+                [self.photos addObject:photo];
+            }
         }
-        [self.browser reloadData];
+        
+        [self.collectionView reloadData];
         
     } failure:^(NSString *errorStr) {
         @strongify(self);
@@ -96,7 +112,24 @@ static NSString *const CellIdentify = @"KGMClassAlbumCell";
     }];
 }
 
+#pragma mark - private methods
+- (void)p_configurationCell:(KGMClassAlbumCell *)cell indexPath:(NSIndexPath *)indexPath {
+    cell.imageUrl = self.photoArr[indexPath.item];
+}
+
 #pragma mark - getter
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        _collectionView = [[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:flowLayout];
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        [_collectionView registerNib:[UINib nibWithNibName:CellIdentify bundle:nil] forCellWithReuseIdentifier:CellIdentify];
+    }
+    return _collectionView;
+}
+
 - (NSMutableArray *)photoArr {
     if (!_photoArr) {
         _photoArr = [NSMutableArray array];
@@ -111,28 +144,11 @@ static NSString *const CellIdentify = @"KGMClassAlbumCell";
     return _thumbArr;
 }
 
-- (MWPhotoBrowser *)browser {
-    if (!_browser) {
-        _browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-        
-        BOOL displayActionButton = NO;
-        BOOL displaySelectionButtons = NO;
-        BOOL displayNavArrows = NO;
-        BOOL enableGrid = YES;
-        BOOL startOnGrid = YES;
-        BOOL autoPlayOnAppear = NO;
-        _browser.displayActionButton = displayActionButton;
-        _browser.displayNavArrows = displayNavArrows;
-        _browser.displaySelectionButtons = displaySelectionButtons;
-        _browser.alwaysShowControls = displaySelectionButtons;
-        _browser.zoomPhotosToFill = YES;
-        _browser.enableGrid = enableGrid;
-        _browser.startOnGrid = startOnGrid;
-        _browser.enableSwipeToDismiss = NO;
-        _browser.autoPlayOnAppear = autoPlayOnAppear;
-        [_browser setCurrentPhotoIndex:0];
+- (NSMutableArray *)photos {
+    if (!_photos) {
+        _photos = [NSMutableArray array];
     }
-    return _browser;
+    return _photos;
 }
 
 - (KGMClassAlbumService *)albumService {

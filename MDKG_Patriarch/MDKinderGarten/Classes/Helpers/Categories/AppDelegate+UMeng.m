@@ -16,7 +16,7 @@ NSString *const kUMengKey = @"56c13f4f67e58ed3790011c7";
 - (void)integrateUMengWithApplication:(UIApplication *)application options:(NSDictionary *)launchOptions {
     [MobClick setLogEnabled:YES];//release版本要注释掉此行
     [MobClick setAppVersion:XcodeAppVersion];
-    [MobClick startWithAppkey:kUMengKey reportPolicy:BATCH channelId:nil];
+//    [MobClick startWithAppkey:kUMengKey reportPolicy:BATCH channelId:nil];
 }
 
 @end
